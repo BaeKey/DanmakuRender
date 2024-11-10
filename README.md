@@ -13,8 +13,36 @@
 
 旧版本可以在分支v1-v4找到。     
 
+## docker-compose.yml
+
+```
+services:
+  danmakurender:
+    image: shiguang2021/danmakurender
+    container_name: danmakurender
+    volumes:
+      - ./app:/app
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+```
+
+复制到宿主机
+
+```
+docker create --name danmakurender shiguang2021/danmakurender && docker cp danmakurender:/app ./app && docker rm danmakurender
+```
+
+自行修改 `./app/configs` 目录下的配置文件
+
+登录账号
+
+```bash
+docker compose exec danmakurender /app/tools/biliup login
+```
 
 ## 使用说明
+
 **如果你是纯萌新建议看我B站的专栏安装：https://www.bilibili.com/read/cv26348023**         
 
 ### 安装与使用文档      
