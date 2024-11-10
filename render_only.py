@@ -52,7 +52,7 @@ def main():
         danmu = os.path.splitext(vname)[0] + '.ass'
         fmt = render_args.get('format', 'mp4')
         if mode == 'dmrender':
-            filename = os.path.splitext(os.path.basename(vname))[0] + f"（弹幕版）.{fmt}"
+            filename = os.path.splitext(os.path.basename(vname))[0] + f".{fmt}"
             if args.output_dir:
                 output_dir = args.output_dir
             else:

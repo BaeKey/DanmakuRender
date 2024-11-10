@@ -95,8 +95,8 @@ download_args:
     margin_w: 0.05
     # 指定弹幕占屏幕的最大比例（即屏幕上半部分有多少可以用来显示弹幕），默认为0.4
     dmrate: 0.4
-    # 指定弹幕字体，默认为微软雅黑字体(Microsoft YaHei)
-    font: Microsoft YaHei
+    # 指定弹幕字体
+    font: WenQuanYi Zen Hei Mono
     # 指定弹幕字体大小，默认为36
     fontsize: 36
     # Distance from Screen Top 弹幕距离屏幕顶端的距离（像素，例如20，表示距离屏幕顶端20px）

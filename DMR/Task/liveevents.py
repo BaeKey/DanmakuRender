@@ -98,7 +98,7 @@ class LiveEvents(BaseEvents):
                         f".{render_args.get('format','mp4')}"
             else:
                 filename = os.path.splitext(os.path.basename(video.path))[0] + \
-                        f"（弹幕版）.{render_args.get('format','mp4')}"
+                        f".{render_args.get('format','mp4')}"
             if render_args.get('output_dir'):
                 output_dir = render_args.get('output_dir')
             else:

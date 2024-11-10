@@ -7,7 +7,7 @@ COPY . .
 
 # 安装必要的系统工具和 Python 依赖
 RUN apt update && \
-    apt install -y ffmpeg git curl nodejs npm jq && \
+    apt install -y ffmpeg git curl nodejs npm jq fonts-wqy-zenhei && \
     pip install -r requirements.txt
 
 # 创建目录并下载 biliupR 最新版本
