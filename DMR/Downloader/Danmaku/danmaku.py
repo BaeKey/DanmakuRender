@@ -67,7 +67,7 @@ class DanmakuDownloader():
             username_filter = [re.compile(str(x)) for x in username_filter]
             self.dm_filter['username'] = username_filter
         except Exception as e:
-            self.logger.warn(f'用户屏蔽{username_filter}设置错误:{e}，此功能将不会生效.')
+            self.logger.warning(f'用户屏蔽{username_filter}设置错误:{e}，此功能将不会生效.')
             self.dm_filter['username'] = []
         
         self.kwargs = kwargs
@@ -174,7 +174,7 @@ class DanmakuDownloader():
                     pass
                 
                 if task.done():
-                    self.logger.error('弹幕下载线程异常退出，正在重试...')
+                    self.logger.error(f'{self.url} 弹幕下载线程异常退出，正在重试...')
                     try:
                         self.logger.debug(task.result())
                     except:
@@ -187,7 +187,7 @@ class DanmakuDownloader():
                     continue
 
                 if self.dm_auto_restart and datetime.now().timestamp()-last_dm_time>self.dm_auto_restart:
-                    self.logger.error('获取弹幕超时，正在重试...')
+                    self.logger.error(f'{self.url} 获取弹幕超时，正在重试...')
                     task.cancel()
                     last_dm_time = datetime.now().timestamp()
                     task = asyncio.create_task(dmc_task())

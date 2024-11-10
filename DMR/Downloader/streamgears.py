@@ -91,12 +91,11 @@ class StreamgearsDownloader():
         self.stoped = True
         try:
             self.streamgears_proc.kill()
-        except Exception as e:
-            self.logger.debug(e)
-        finally:
             out, _ = self.streamgears_proc.communicate(timeout=0.1)
             if out: 
                 self.logger.debug(f'{self.taskname} streamgears: {out}')
+        except Exception as e:
+            self.logger.debug(e)
 
         files = sorted(glob.glob(join(self.output_dir, f'*{self.uuid}*')))
         for p in range(len(files)):

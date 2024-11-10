@@ -149,7 +149,7 @@ class YuttoDownloader():
                             segment_id=pid,
                             size=0,
                             duration=pinfo['duration'],
-                            ctime=video_info['pubdate'],
+                            ctime=datetime.fromtimestamp(video_info['pubdate']),
                             title=pinfo['part'],
                             streamer=StreamerInfo(
                                 name=video_info['owner']['name'], 

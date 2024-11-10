@@ -26,7 +26,7 @@ download_args:
   # 在使用streamgears作为录制引擎时，录制视频格式可能会根据直播流的不同而不同
   # 建议PC推流的直播使用ffmpeg录制，手机推流的直播使用streamgears录制
   # 录制twitch等特殊平台建议使用streamlink
-  engine: ffmpeg
+  engine: streamgears
   # 是否录制弹幕
   danmaku: True
   # 是否录制直播流
@@ -190,7 +190,7 @@ clean_args:
     # 目标文件夹，文件夹不存在会自动创建，可以使用关键字替换
     dest: ~
     # 清理延迟（秒），默认86400（24小时）
-    delay: 0
+    delay: 86400
     # 清理弹幕视频时同时清理原文件，默认false
     # 请注意，此功能应该只在不上传原文件的情况下使用，否则会导致上传失败
     w_srcfile: False

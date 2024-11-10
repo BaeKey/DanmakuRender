@@ -37,7 +37,7 @@ class VideoDownloadTask():
         if self.engine is None:
             if self.platfrom == 'bilibili':
                 self.engine = 'yutto'
-            elif self.platfrom == 'youtube':
+            else:
                 self.engine = 'yt-dlp'
     
     def _pipeSend(self, event, msg, target=None, dtype=None, data=None, **kwargs):

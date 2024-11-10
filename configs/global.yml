@@ -29,7 +29,7 @@ download_args:
     # 建议PC推流的直播使用ffmpeg录制，手机推流的直播使用streamgears录制
     # 录制twitch等特殊平台建议使用streamlink
     # streamlink可用平台请参考 https://streamlink.github.io/plugins.html
-    engine: ffmpeg
+    engine: streamgears
     # 录制输出文件夹，设置为空则使用主播名称作为文件夹
     output_dir: ./直播回放
     # 录制文件名称模板

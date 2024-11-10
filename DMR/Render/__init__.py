@@ -24,6 +24,7 @@ class Render():
 
         self._piperecvprocess = None
         self.render_tasks = {}
+        self._render_class = {}
         self.render_executors = ThreadPoolExecutor(max_workers=self.nrenders)
         self._lock = threading.Lock()
 
@@ -118,7 +119,10 @@ class Render():
             self.logger.info(f'正在渲染: {video.path}')
             os.makedirs(os.path.dirname(output), exist_ok=True)
 
+            self._render_class[task['uuid']] = target_render
             status, info = target_render.render_one(video=video, output=output)
+            self._render_class.pop(task['uuid'])
+
             if status:
                 self._gather(task, 'info', desc=info)
             else:
@@ -128,3 +132,10 @@ class Render():
         except Exception as e:
             self.logger.exception(e)
             self._gather(task, 'error', desc=e)
+
+    def stop(self):
+        self.stoped = True
+        for uuid, render in self._render_class.items():
+            render.stop()
+        self.render_executors.shutdown(wait=False)
+        self.logger.info('Render stopped.')

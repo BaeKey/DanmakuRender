@@ -155,14 +155,13 @@ class YtdlpDownloader:
                             name=yt_video['uploader'],
                             uid=yt_video['uploader_id'],
                             platform='youtube',
-                            url=yt_video['uploader_url'],
+                            url=yt_video.get('uploader_url', self.url),
                         ),
                         group_id=uuid(8),
                         segment_id=0,
                         dm_file_id=self._get_subtitle(yt_video['filename']),
-                        desc=yt_video['description'],
-                        tag=yt_video['tags'],
-                        cover_url=yt_video['thumbnail'],
+                        desc=yt_video.get('description', ''),
+                        tag=yt_video.get('tags', ''),
                     )
                     self.segment_callback(video_info)
                     downloaded_today.append(yt_video['id'])
